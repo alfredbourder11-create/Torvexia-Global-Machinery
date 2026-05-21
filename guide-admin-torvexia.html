@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guide Administrateur — TORVEXIA Global Machinery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --amber: #f59e0b;
+    --amber-light: #fef3c7;
+    --amber-dark: #d97706;
+    --zinc-950: #09090b;
+    --zinc-900: #18181b;
+    --zinc-800: #27272a;
+    --zinc-700: #3f3f46;
+    --zinc-500: #71717a;
+    --zinc-300: #d4d4d8;
+    --zinc-100: #f4f4f5;
+    --zinc-50: #fafafa;
+    --green: #16a34a;
+    --green-light: #dcfce7;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --blue: #2563eb;
+    --blue-light: #dbeafe;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1c1917;
+    background: #fff;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--zinc-950);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .cover-logo {
+    width: 72px; height: 72px;
+    background: var(--amber);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 900;
+    color: var(--zinc-950);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .cover h1 {
+    font-size: 42px; font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .cover h1 span { color: var(--amber); }
+  .cover-subtitle {
+    font-size: 16px;
+    color: #a1a1aa;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .cover-tag {
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.3);
+    color: var(--amber);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .cover-meta {
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 32px;
+    color: #52525b;
+    font-size: 13px;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  /* ── TOC ── */
+  .toc-page {
+    padding: 60px 80px;
+    page-break-after: always;
+    min-height: 100vh;
+  }
+  .toc-page h2 {
+    font-size: 26px; font-weight: 800;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--zinc-100);
+  }
+  .toc-item {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--zinc-300);
+    font-size: 14px;
+  }
+  .toc-num {
+    background: var(--amber);
+    color: var(--zinc-950);
+    font-weight: 800;
+    font-size: 11px;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .toc-title { font-weight: 600; flex: 1; }
+  .toc-page-num { color: var(--zinc-500); font-size: 13px; }
+  .toc-section {
+    font-size: 12px;
+    color: var(--zinc-500);
+    margin-left: 34px;
+    padding: 2px 0;
+  }
+
+  /* ── CONTENT PAGES ── */
+  .page {
+    padding: 56px 80px;
+    page-break-after: always;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Chapter header */
+  .chapter-header {
+    display: flex; align-items: flex-start; gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--zinc-100);
+  }
+  .chapter-num {
+    width: 52px; height: 52px;
+    background: var(--zinc-950);
+    color: var(--amber);
+    font-size: 22px; font-weight: 900;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .chapter-info h2 {
+    font-size: 24px; font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .chapter-info p { color: var(--zinc-500); font-size: 13px; }
+
+  /* Section */
+  h3 {
+    font-size: 16px; font-weight: 700;
+    margin: 28px 0 12px;
+    color: var(--zinc-950);
+    display: flex; align-items: center; gap: 8px;
+  }
+  h3::before {
+    content: '';
+    display: inline-block;
+    width: 4px; height: 18px;
+    background: var(--amber);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  h4 {
+    font-size: 14px; font-weight: 700;
+    margin: 20px 0 8px;
+    color: var(--zinc-800);
+  }
+  p { margin-bottom: 12px; color: #374151; }
+
+  /* Steps */
+  .steps { counter-reset: step; margin: 16px 0; }
+  .step {
+    display: flex; gap: 16px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    min-width: 28px; height: 28px;
+    background: var(--zinc-950);
+    color: white;
+    font-weight: 800; font-size: 13px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content { flex: 1; }
+  .step-content strong { font-weight: 700; color: var(--zinc-950); }
+
+  /* Boxes */
+  .box {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    display: flex; gap: 14px;
+    align-items: flex-start;
+  }
+  .box-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .box-content { flex: 1; }
+  .box-content strong { display: block; font-weight: 700; margin-bottom: 3px; font-size: 13px; }
+  .box-content p { margin: 0; font-size: 13px; }
+
+  .box-tip { background: var(--blue-light); border: 1px solid #93c5fd; }
+  .box-tip .box-icon { color: var(--blue); }
+  .box-tip strong { color: var(--blue); }
+
+  .box-warning { background: var(--amber-light); border: 1px solid #fcd34d; }
+  .box-warning .box-icon { color: var(--amber-dark); }
+  .box-warning strong { color: var(--amber-dark); }
+
+  .box-success { background: var(--green-light); border: 1px solid #86efac; }
+  .box-success .box-icon { color: var(--green); }
+  .box-success strong { color: var(--green); }
+
+  .box-danger { background: var(--red-light); border: 1px solid #fca5a5; }
+  .box-danger .box-icon { color: var(--red); }
+  .box-danger strong { color: var(--red); }
+
+  /* Code */
+  code {
+    background: var(--zinc-100);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    color: var(--zinc-800);
+    font-weight: 600;
+  }
+  .code-block {
+    background: var(--zinc-950);
+    color: #e5e7eb;
+    border-radius: 12px;
+    padding: 18px 22px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    margin: 14px 0;
+    line-height: 1.8;
+    overflow: hidden;
+  }
+  .code-block .comment { color: #6b7280; }
+  .code-block .key { color: var(--amber); }
+  .code-block .value { color: #86efac; }
+  .code-block .url { color: #93c5fd; }
+
+  /* Path bar */
+  .path-bar {
+    background: var(--zinc-100);
+    border: 1px solid var(--zinc-300);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--zinc-800);
+    margin: 10px 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .path-bar::before { content: '📁'; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px; }
+  th {
+    background: var(--zinc-950);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--zinc-100); vertical-align: top; }
+  tr:hover td { background: var(--zinc-50); }
+  td:first-child { font-weight: 600; color: var(--zinc-800); }
+
+  /* Grid 2col */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+  .card {
+    border: 1px solid var(--zinc-200);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .card h4 { margin-top: 0; color: var(--amber-dark); }
+
+  /* Badge */
+  .badge {
+    display: inline-flex; align-items: center;
+    background: var(--zinc-950);
+    color: var(--amber);
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 6px;
+  }
+  .badge-green {
+    background: var(--green-light);
+    color: var(--green);
+  }
+
+  /* URL highlight */
+  .url-box {
+    background: linear-gradient(135deg, var(--zinc-950), #1c1c1e);
+    color: var(--amber);
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin: 14px 0;
+    letter-spacing: 0.05em;
+  }
+
+  /* Divider */
+  hr { border: none; border-top: 1px solid var(--zinc-200); margin: 24px 0; }
+
+  /* Footer */
+  .page-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--zinc-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--zinc-500);
+  }
+  .page-footer strong { color: var(--zinc-800); }
+
+  /* Print */
+  @media print {
+    body { font-size: 13px; }
+    .cover { min-height: 100vh; }
+    .page { page-break-after: always; }
+    @page { margin: 0; size: A4; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     COVER PAGE
+════════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo">T</div>
+  <div class="cover-tag">Guide Administrateur Officiel</div>
+  <h1>TORVEXIA<br><span>Global Machinery</span></h1>
+  <p class="cover-subtitle">Manuel complet d'utilisation et de personnalisation<br>du site web et du panneau d'administration</p>
+  <div class="cover-meta">
+    <p>Version 1.0 &nbsp;·&nbsp; Mai 2026 &nbsp;·&nbsp; Confidentiel</p>
+    <p style="margin-top:6px;">Panneau Admin : <strong style="color:#f59e0b;">localhost:3000/admin</strong></p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TABLE DES MATIÈRES
+════════════════════════════════════════════════════════════════ -->
+<div class="toc-page">
+  <h2>Table des matières</h2>
+
+  <div class="toc-item">
+    <span class="toc-num">1</span>
+    <span class="toc-title">Démarrage du site et accès à l'administration</span>
+    <span class="toc-page-num">3</span>
+  </div>
+  <div class="toc-section">Lancer le serveur · Se connecter · Se déconnecter · Changer le mot de passe</div>
+
+  <div class="toc-item">
+    <span class="toc-num">2</span>
+    <span class="toc-title">Tableau de bord — Vue d'ensemble</span>
+    <span class="toc-page-num">4</span>
+  </div>
+  <div class="toc-section">Statistiques · Médias récents · Navigation</div>
+
+  <div class="toc-item">
+    <span class="toc-num">3</span>
+    <span class="toc-title">Médiathèque — Gérer photos et vidéos</span>
+    <span class="toc-page-num">5</span>
+  </div>
+  <div class="toc-section">Téléverser des fichiers · Catégories · Supprimer · Copier l'URL</div>
+
+  <div class="toc-item">
+    <span class="toc-num">4</span>
+    <span class="toc-title">Galeries — Organiser vos collections</span>
+    <span class="toc-page-num">6</span>
+  </div>
+  <div class="toc-section">Créer · Ajouter des images · Modifier · Supprimer</div>
+
+  <div class="toc-item">
+    <span class="toc-num">5</span>
+    <span class="toc-title">Paramètres — Informations de contact et textes</span>
+    <span class="toc-page-num">7</span>
+  </div>
+  <div class="toc-section">Email · WhatsApp · Titre Hero · Sous-titre Hero</div>
+
+  <div class="toc-item">
+    <span class="toc-num">6</span>
+    <span class="toc-title">Modifier le logo et l'identité visuelle</span>
+    <span class="toc-page-num">8</span>
+  </div>
+  <div class="toc-section">Changer la lettre T · Ajouter un vrai logo image · Couleurs</div>
+
+  <div class="toc-item">
+    <span class="toc-num">7</span>
+    <span class="toc-title">Modifier les textes du site par langue</span>
+    <span class="toc-page-num">9</span>
+  </div>
+  <div class="toc-section">Fichiers de traduction · Structure JSON · Les 6 langues · Sections</div>
+
+  <div class="toc-item">
+    <span class="toc-num">8</span>
+    <span class="toc-title">Personnaliser le catalogue produits</span>
+    <span class="toc-page-num">10</span>
+  </div>
+  <div class="toc-section">Ajouter un produit · Modifier prix/puissance · Catégories</div>
+
+  <div class="toc-item">
+    <span class="toc-num">9</span>
+    <span class="toc-title">Gérer les témoignages clients</span>
+    <span class="toc-page-num">11</span>
+  </div>
+  <div class="toc-section">Ajouter · Modifier · Étoiles · Textes multilingues</div>
+
+  <div class="toc-item">
+    <span class="toc-num">10</span>
+    <span class="toc-title">Mettre en ligne (déploiement)</span>
+    <span class="toc-page-num">12</span>
+  </div>
+  <div class="toc-section">Vercel · Variables d'environnement · Domaine personnalisé</div>
+
+  <div class="toc-item">
+    <span class="toc-num">11</span>
+    <span class="toc-title">Résolution des problèmes courants</span>
+    <span class="toc-page-num">13</span>
+  </div>
+  <div class="toc-section">Site ne démarre pas · Mot de passe oublié · Images ne s'affichent pas</div>
+
+  <div style="margin-top: 40px; padding: 20px; background: #fef3c7; border-radius: 12px; border: 1px solid #fcd34d;">
+    <strong style="color: #d97706; font-size: 13px;">📌 Comment utiliser ce guide</strong>
+    <p style="margin: 6px 0 0; font-size: 13px; color: #374151;">
+      Ce guide est organisé par tâche. Chaque section est indépendante — vous pouvez aller directement à ce dont vous avez besoin. Les étapes numérotées sont à suivre dans l'ordre. Les encadrés colorés signalent des conseils (bleu), avertissements (jaune) et points importants (rouge).
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Table des matières</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 1 — DÉMARRAGE ET ACCÈS
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">1</div>
+    <div class="chapter-info">
+      <h2>Démarrage du site et accès à l'administration</h2>
+      <p>Comment lancer le serveur local et accéder au panneau admin</p>
+    </div>
+  </div>
+
+  <h3>1.1 — Lancer le serveur de développement</h3>
+  <p>Le site fonctionne en local sur votre ordinateur. Avant de pouvoir le consulter ou accéder à l'admin, vous devez démarrer le serveur.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-content">
+        <strong>Ouvrez le terminal PowerShell</strong> dans le dossier du projet. Le dossier du projet se trouve ici :
+        <div class="path-bar">C:\Users\HP\torvexia-global</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Tapez la commande suivante</strong> et appuyez sur Entrée :
+        <div class="code-block"><span class="url">npm run dev</span></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Attendez le message de confirmation</strong> : vous verrez <code>Ready in X ms</code>. Le site est maintenant accessible.
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-warning">
+    <div class="box-icon">⚡</div>
+    <div class="box-content">
+      <strong>Important</strong>
+      <p>Le serveur doit rester ouvert dans le terminal pendant que vous travaillez. Ne fermez pas la fenêtre PowerShell pendant l'utilisation du site.</p>
+    </div>
+  </div>
+
+  <h3>1.2 — Accéder au panneau d'administration</h3>
+  <p>Une fois le serveur lancé, ouvrez votre navigateur (Chrome recommandé) et allez à cette adresse :</p>
+  <div class="url-box">localhost:3000/admin/login</div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-content">
+        <strong>Entrez votre mot de passe</strong> dans le champ prévu (voir ci-dessous).
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Cliquez sur "Se connecter"</strong>. Vous serez redirigé vers le tableau de bord.
+      </div>
+    </div>
+  </div>
+
+  <h4>Mot de passe par défaut</h4>
+  <div class="code-block"><span class="key">Mot de passe :</span> <span class="value">torvexia2024</span></div>
+
+  <h3>1.3 — Changer le mot de passe</h3>
+  <p>Pour changer le mot de passe, ouvrez le fichier <code>.env.local</code> à la racine du projet :</p>
+  <div class="path-bar">C:\Users\HP\torvexia-global\.env.local</div>
+  <div class="code-block"><span class="key">ADMIN_PASSWORD</span>=<span class="value">votre_nouveau_mot_de_passe</span></div>
+  <p>Sauvegardez le fichier et redémarrez le serveur (<code>Ctrl+C</code> puis <code>npm run dev</code>).</p>
+
+  <div class="box box-danger">
+    <div class="box-icon">🔒</div>
+    <div class="box-content">
+      <strong>Sécurité</strong>
+      <p>Changez le mot de passe par défaut avant de mettre le site en ligne. N'utilisez jamais <code>torvexia2024</code> en production.</p>
+    </div>
+  </div>
+
+  <h3>1.4 — Se déconnecter</h3>
+  <p>Dans la sidebar de gauche, cliquez sur <strong>"Déconnexion"</strong> en bas. Vous pouvez aussi aller directement à <code>localhost:3000/admin/logout</code>.</p>
+
+  <hr/>
+  <table>
+    <tr><th>URL</th><th>Description</th></tr>
+    <tr><td>localhost:3000</td><td>Page d'accueil du site (version espagnole par défaut)</td></tr>
+    <tr><td>localhost:3000/fr</td><td>Site en français</td></tr>
+    <tr><td>localhost:3000/en</td><td>Site en anglais</td></tr>
+    <tr><td>localhost:3000/zh</td><td>Site en chinois</td></tr>
+    <tr><td>localhost:3000/admin</td><td>Tableau de bord admin (redirige vers login si non connecté)</td></tr>
+    <tr><td>localhost:3000/admin/login</td><td>Page de connexion admin</td></tr>
+  </table>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 1 — Démarrage et accès</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 2 — TABLEAU DE BORD
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">2</div>
+    <div class="chapter-info">
+      <h2>Tableau de bord — Vue d'ensemble</h2>
+      <p>La page principale de l'espace d'administration</p>
+    </div>
+  </div>
+
+  <p>Le tableau de bord est la première page que vous voyez après connexion. Il centralise toutes les informations importantes sur l'état de votre médiathèque.</p>
+
+  <h3>2.1 — Les 4 statistiques principales</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>📁 Total médias</h4>
+      <p>Nombre total de fichiers (photos + vidéos) téléversés dans la médiathèque.</p>
+    </div>
+    <div class="card">
+      <h4>🖼️ Images</h4>
+      <p>Nombre de photos uniquement (JPG, PNG, WebP).</p>
+    </div>
+    <div class="card">
+      <h4>🎬 Vidéos</h4>
+      <p>Nombre de vidéos uniquement (MP4, WebM).</p>
+    </div>
+    <div class="card">
+      <h4>🗂️ Galeries</h4>
+      <p>Nombre de collections d'images créées.</p>
+    </div>
+  </div>
+
+  <h3>2.2 — Médias récemment ajoutés</h3>
+  <p>La section du bas affiche une grille avec les 6 derniers fichiers uploadés. Survolez une miniature pour voir le nom du fichier. Si aucun média n'a encore été ajouté, un bouton vous guide directement vers la médiathèque.</p>
+
+  <h3>2.3 — Navigation dans l'admin</h3>
+  <p>La barre de gauche (sidebar) permet de naviguer entre les 4 sections de l'admin :</p>
+
+  <table>
+    <tr><th>Icône</th><th>Section</th><th>Utilité</th></tr>
+    <tr><td>🏠</td><td>Tableau de bord</td><td>Vue générale et statistiques</td></tr>
+    <tr><td>🖼️</td><td>Médiathèque</td><td>Gérer toutes vos photos et vidéos</td></tr>
+    <tr><td>🗂️</td><td>Galeries</td><td>Organiser les images en collections</td></tr>
+    <tr><td>⚙️</td><td>Paramètres</td><td>Modifier les infos de contact et textes</td></tr>
+  </table>
+
+  <p>En bas de la sidebar, deux liens supplémentaires :</p>
+  <ul style="margin: 8px 0 12px 20px;">
+    <li style="margin-bottom: 6px;"><strong>Voir le site</strong> — ouvre le site public dans un nouvel onglet</li>
+    <li><strong>Déconnexion</strong> — vous déconnecte de l'admin</li>
+  </ul>
+
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <strong>Astuce</strong>
+      <p>Vous pouvez garder le site public et l'admin ouverts en même temps dans deux onglets différents pour voir vos modifications en temps réel.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 2 — Tableau de bord</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 3 — MÉDIATHÈQUE
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">3</div>
+    <div class="chapter-info">
+      <h2>Médiathèque — Gérer photos et vidéos</h2>
+      <p>Téléverser, organiser et supprimer vos fichiers médias</p>
+    </div>
+  </div>
+
+  <h3>3.1 — Téléverser des fichiers (Upload)</h3>
+  <p>Accédez à <strong>Médiathèque</strong> dans la sidebar.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-content">
+        <strong>Choisissez la catégorie</strong> de destination en cliquant sur un des boutons en haut de la zone d'upload : <span class="badge">Général</span> <span class="badge">Tracteurs</span> <span class="badge">Équipements</span> <span class="badge">Logos</span> <span class="badge">Vidéos</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Déposez vos fichiers</strong> directement sur la zone pointillée (glisser-déposer) <strong>OU</strong> cliquez sur la zone pour ouvrir le sélecteur de fichiers.
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Attendez la progression</strong> : chaque fichier affiche une icône de chargement. Une fois terminé, la miniature apparaît instantanément dans la grille.
+      </div>
+    </div>
+  </div>
+
+  <h4>Formats acceptés</h4>
+  <table>
+    <tr><th>Type</th><th>Formats</th><th>Taille max</th></tr>
+    <tr><td>Images</td><td>JPG, PNG, WebP, GIF</td><td>100 MB</td></tr>
+    <tr><td>Vidéos</td><td>MP4, WebM, MOV (QuickTime)</td><td>100 MB</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <strong>Upload multiple</strong>
+      <p>Vous pouvez sélectionner ou glisser plusieurs fichiers en même temps. Ils seront uploadés en parallèle.</p>
+    </div>
+  </div>
+
+  <h3>3.2 — Filtrer et parcourir</h3>
+  <p>Sous la zone d'upload, trois boutons permettent de filtrer l'affichage :</p>
+  <ul style="margin: 8px 0 12px 20px;">
+    <li style="margin-bottom: 4px;"><strong>Tous</strong> — affiche tous les fichiers</li>
+    <li style="margin-bottom: 4px;"><strong>Images</strong> — affiche uniquement les photos</li>
+    <li><strong>Vidéos</strong> — affiche uniquement les vidéos</li>
+  </ul>
+  <p>Le chiffre entre parenthèses indique le nombre de fichiers dans chaque catégorie.</p>
+
+  <h3>3.3 — Voir les détails d'un fichier</h3>
+  <p><strong>Cliquez sur une miniature</strong> pour ouvrir le panneau de détails à droite. Il affiche :</p>
+  <ul style="margin: 8px 0 12px 20px;">
+    <li style="margin-bottom: 4px;">Un aperçu agrandi (image ou lecteur vidéo)</li>
+    <li style="margin-bottom: 4px;">Le type, la taille, la catégorie et la date d'ajout</li>
+    <li style="margin-bottom: 4px;"><strong>Bouton "Copier l'URL"</strong> — copie le lien direct du fichier dans votre presse-papiers</li>
+    <li><strong>Bouton "Supprimer"</strong> — supprime définitivement le fichier</li>
+  </ul>
+
+  <h3>3.4 — Supprimer un fichier</h3>
+  <div class="steps">
+    <div class="step"><div class="step-content"><strong>Survolez</strong> la miniature pour voir apparaître l'icône ✕ en haut à droite.</div></div>
+    <div class="step"><div class="step-content"><strong>Cliquez sur ✕</strong> ou utilisez le bouton "Supprimer" dans le panneau de détails.</div></div>
+    <div class="step"><div class="step-content"><strong>Confirmez</strong> la suppression dans la boîte de dialogue.</div></div>
+  </div>
+
+  <div class="box box-danger">
+    <div class="box-icon">⚠️</div>
+    <div class="box-content">
+      <strong>Suppression définitive</strong>
+      <p>La suppression efface le fichier du serveur et de la base de données. Cette action est irréversible. Assurez-vous de ne plus utiliser l'image avant de la supprimer.</p>
+    </div>
+  </div>
+
+  <h3>3.5 — Où sont stockés les fichiers ?</h3>
+  <p>Tous les fichiers uploadés sont enregistrés dans le dossier :</p>
+  <div class="path-bar">C:\Users\HP\torvexia-global\public\uploads\</div>
+  <p>Chaque catégorie a son propre sous-dossier : <code>tractors/</code>, <code>implements/</code>, <code>general/</code>, <code>logos/</code>, <code>videos/</code>.</p>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 3 — Médiathèque</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 4 — GALERIES
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">4</div>
+    <div class="chapter-info">
+      <h2>Galeries — Organiser vos collections</h2>
+      <p>Créer des groupes d'images thématiques</p>
+    </div>
+  </div>
+
+  <p>Les galeries permettent de regrouper des images de la médiathèque en collections organisées (ex : "Tracteurs TX504", "Machines en action", "Démos client").</p>
+
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <strong>Pré-requis</strong>
+      <p>Vous devez d'abord ajouter des images dans la Médiathèque avant de pouvoir les intégrer à une galerie.</p>
+    </div>
+  </div>
+
+  <h3>4.1 — Créer une nouvelle galerie</h3>
+  <div class="steps">
+    <div class="step"><div class="step-content"><strong>Cliquez sur "Nouvelle galerie"</strong> (bouton amber en haut de la page).</div></div>
+    <div class="step"><div class="step-content"><strong>Donnez un nom</strong> à la galerie (obligatoire), ex : "Tracteurs TX704 — Inspection 2026".</div></div>
+    <div class="step"><div class="step-content"><strong>Ajoutez une description</strong> (optionnel) pour vous y retrouver plus facilement.</div></div>
+    <div class="step"><div class="step-content"><strong>Sélectionnez les images</strong> dans la grille : cliquez sur chaque image à inclure. Une coche apparaît sur les images sélectionnées.</div></div>
+    <div class="step"><div class="step-content"><strong>Cliquez sur "Enregistrer"</strong>. La galerie apparaît dans la liste.</div></div>
+  </div>
+
+  <h3>4.2 — Modifier une galerie</h3>
+  <div class="steps">
+    <div class="step"><div class="step-content"><strong>Trouvez la galerie</strong> dans la liste et cliquez sur <strong>"Modifier"</strong>.</div></div>
+    <div class="step"><div class="step-content"><strong>Modifiez</strong> le nom, la description ou la sélection d'images.</div></div>
+    <div class="step"><div class="step-content"><strong>Cliquez sur "Enregistrer"</strong> pour appliquer les changements.</div></div>
+  </div>
+
+  <h3>4.3 — Supprimer une galerie</h3>
+  <p>Cliquez sur le bouton rouge <strong>"Supprimer"</strong> sur la carte de la galerie, puis confirmez. <em>Note : supprimer une galerie ne supprime pas les images de la médiathèque — elles restent disponibles.</em></p>
+
+  <h3>4.4 — Aperçu d'une galerie</h3>
+  <p>Chaque galerie affiche une grille de 4 miniatures (les 4 premières images sélectionnées) ainsi que le nombre total d'images.</p>
+
+  <hr/>
+
+  <h3>4.5 — Utiliser une galerie sur le site</h3>
+  <p>Pour afficher une galerie sur votre site, vous pouvez utiliser les URLs directes des images. Chaque image a une URL de type :</p>
+  <div class="code-block"><span class="url">http://localhost:3000/uploads/tractors/nom-du-fichier.jpg</span></div>
+  <p>Copiez l'URL depuis le panneau de détails dans la Médiathèque et utilisez-la dans les sections du catalogue ou de présentation.</p>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 4 — Galeries</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 5 — PARAMÈTRES
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">5</div>
+    <div class="chapter-info">
+      <h2>Paramètres — Informations de contact et textes</h2>
+      <p>Modifier les informations visibles sur le site sans toucher au code</p>
+    </div>
+  </div>
+
+  <p>La page Paramètres vous permet de modifier directement les informations de contact et les textes principaux du site depuis l'interface admin.</p>
+
+  <h3>5.1 — Accéder aux paramètres</h3>
+  <p>Cliquez sur <strong>"Paramètres"</strong> dans la sidebar (icône engrenage). La page affiche un formulaire avec 4 champs.</p>
+
+  <h3>5.2 — Les 4 champs configurables</h3>
+
+  <table>
+    <tr><th>Champ</th><th>Description</th><th>Exemple</th></tr>
+    <tr>
+      <td>Email de contact</td>
+      <td>Adresse email affichée dans la section Contact du site et dans le footer</td>
+      <td>contact@torvexia.com</td>
+    </tr>
+    <tr>
+      <td>WhatsApp</td>
+      <td>Numéro WhatsApp avec indicatif international pour les clients</td>
+      <td>+86 130 0000 0000</td>
+    </tr>
+    <tr>
+      <td>Titre principal (Hero)</td>
+      <td>Le grand titre visible dès l'arrivée sur le site</td>
+      <td>Maquinaria Agrícola Nueva</td>
+    </tr>
+    <tr>
+      <td>Sous-titre (Hero)</td>
+      <td>La phrase descriptive sous le titre principal</td>
+      <td>Del puerto a tu campo sin intermediarios...</td>
+    </tr>
+  </table>
+
+  <div class="box box-warning">
+    <div class="box-icon">⚠️</div>
+    <div class="box-content">
+      <strong>Attention — Textes multilingues</strong>
+      <p>Les paramètres sauvegardés ici s'appliquent à toutes les langues de la même façon. Pour des textes différents par langue, modifiez les fichiers de traduction (voir Chapitre 7).</p>
+    </div>
+  </div>
+
+  <h3>5.3 — Sauvegarder les paramètres</h3>
+  <div class="steps">
+    <div class="step"><div class="step-content"><strong>Remplissez les champs</strong> souhaités.</div></div>
+    <div class="step"><div class="step-content"><strong>Cliquez sur "Enregistrer"</strong>. Le bouton devient vert avec une coche "Sauvegardé" pendant 3 secondes pour confirmer.</div></div>
+    <div class="step"><div class="step-content"><strong>Rafraîchissez le site</strong> dans l'autre onglet pour voir les changements.</div></div>
+  </div>
+
+  <h3>5.4 — Où sont sauvegardées les données ?</h3>
+  <p>Les paramètres sont stockés dans un fichier JSON simple :</p>
+  <div class="path-bar">C:\Users\HP\torvexia-global\data\settings.json</div>
+  <p>Vous pouvez aussi modifier ce fichier directement avec un éditeur de texte si vous le souhaitez.</p>
+
+  <div class="box box-success">
+    <div class="box-icon">✅</div>
+    <div class="box-content">
+      <strong>Données de la médiathèque</strong>
+      <p>La liste des médias uploadés est stockée dans <code>data/media.json</code> et les galeries dans <code>data/galleries.json</code>. Ces fichiers sont mis à jour automatiquement par l'admin.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 5 — Paramètres</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 6 — LOGO ET IDENTITÉ VISUELLE
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">6</div>
+    <div class="chapter-info">
+      <h2>Modifier le logo et l'identité visuelle</h2>
+      <p>Changer le logo, les couleurs et la typographie du site</p>
+    </div>
+  </div>
+
+  <h3>6.1 — Logo actuel (lettre "T")</h3>
+  <p>Le logo actuel est un carré amber avec la lettre <strong>T</strong>. Il apparaît dans la navbar en haut, dans le footer, et sur la page de connexion admin. Pour modifier cette lettre ou sa couleur :</p>
+
+  <h4>Modifier dans la Navbar</h4>
+  <div class="path-bar">src\components\layout\Navbar.tsx — ligne ~62</div>
+  <div class="code-block">
+<span class="comment">// Changez la lettre "T" par votre initiale</span>
+&lt;div className="w-8 h-8 <span class="key">bg-amber-500</span> rounded-lg..."&gt;
+  <span class="value">T</span>  <span class="comment">← modifier ici</span>
+&lt;/div&gt;
+  </div>
+
+  <h4>Modifier dans le Footer</h4>
+  <div class="path-bar">src\components\layout\Footer.tsx — ligne ~30</div>
+
+  <h3>6.2 — Remplacer par un vrai logo image</h3>
+  <p>Pour utiliser un fichier image (PNG transparent recommandé) comme logo :</p>
+
+  <div class="steps">
+    <div class="step"><div class="step-content"><strong>Uploadez votre logo</strong> dans la Médiathèque (catégorie "Logos"). Copiez son URL.</div></div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Dans Navbar.tsx</strong>, remplacez le bloc <code>&lt;div&gt;T&lt;/div&gt;</code> par :
+        <div class="code-block">&lt;img src="<span class="value">/uploads/logos/votre-logo.png</span>"
+     alt="TORVEXIA"
+     className="<span class="key">h-8 w-auto</span>" /&gt;</div>
+      </div>
+    </div>
+    <div class="step"><div class="step-content"><strong>Faites la même modification</strong> dans Footer.tsx et dans <code>src/app/admin/login/page.tsx</code>.</div></div>
+  </div>
+
+  <h3>6.3 — Changer les couleurs du site</h3>
+  <p>La couleur principale est le <strong>amber (doré)</strong>. Elle est utilisée dans tout le site via les classes Tailwind <code>amber-400</code>, <code>amber-500</code>. Pour changer la couleur d'accentuation :</p>
+
+  <div class="box box-warning">
+    <div class="box-icon">🎨</div>
+    <div class="box-content">
+      <strong>Remplacement global des couleurs</strong>
+      <p>Utilisez la fonction "Remplacer dans tous les fichiers" de votre éditeur de texte (VS Code : <code>Ctrl+Shift+H</code>) pour remplacer <code>amber</code> par une autre couleur Tailwind comme <code>orange</code>, <code>yellow</code>, <code>emerald</code>, ou <code>sky</code>.</p>
+    </div>
+  </div>
+
+  <h3>6.4 — Modifier le nom "TORVEXIA"</h3>
+  <p>Le nom de marque est affiché directement dans les composants. Pour le changer, recherchez <code>TORVEXIA</code> dans tous les fichiers du dossier <code>src/</code> et remplacez-le par votre nom de marque.</p>
+
+  <h3>6.5 — Typographie</h3>
+  <p>Le site utilise deux polices Google Fonts :</p>
+  <table>
+    <tr><th>Police</th><th>Usage</th><th>Variable CSS</th></tr>
+    <tr><td>Space Grotesk</td><td>Titres, prix, nombres</td><td>--font-display</td></tr>
+    <tr><td>Inter</td><td>Corps de texte, navigation</td><td>--font-sans</td></tr>
+  </table>
+  <p>Pour changer les polices, modifiez le fichier <code>src/app/[locale]/layout.tsx</code> — remplacez les imports de <code>Space_Grotesk</code> et <code>Inter</code> par d'autres polices Google Fonts.</p>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 6 — Logo et identité visuelle</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 7 — TEXTES MULTILINGUES
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">7</div>
+    <div class="chapter-info">
+      <h2>Modifier les textes du site par langue</h2>
+      <p>Les 6 fichiers de traduction — comment les éditer facilement</p>
+    </div>
+  </div>
+
+  <h3>7.1 — Les fichiers de traduction</h3>
+  <p>Chaque langue du site est gérée par un fichier JSON dans le dossier <code>messages/</code> :</p>
+
+  <table>
+    <tr><th>Fichier</th><th>Langue</th><th>URL du site</th></tr>
+    <tr><td>messages/es.json</td><td>Espagnol (défaut)</td><td>localhost:3000 ou /es</td></tr>
+    <tr><td>messages/en.json</td><td>Anglais</td><td>localhost:3000/en</td></tr>
+    <tr><td>messages/fr.json</td><td>Français</td><td>localhost:3000/fr</td></tr>
+    <tr><td>messages/pt.json</td><td>Portugais</td><td>localhost:3000/pt</td></tr>
+    <tr><td>messages/it.json</td><td>Italien</td><td>localhost:3000/it</td></tr>
+    <tr><td>messages/zh.json</td><td>Chinois (simplifié)</td><td>localhost:3000/zh</td></tr>
+  </table>
+
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <strong>Éditeur recommandé</strong>
+      <p>Utilisez <strong>Visual Studio Code</strong> (gratuit) pour éditer ces fichiers. Il colore le JSON et vous avertit si vous faites une erreur de syntaxe.</p>
+    </div>
+  </div>
+
+  <h3>7.2 — Structure du fichier</h3>
+  <p>Chaque fichier est organisé par section du site. Exemple pour modifier le titre de la section Paiement en français :</p>
+  <div class="code-block">
+<span class="comment">// messages/fr.json — extrait</span>
+{
+  <span class="key">"payment"</span>: {
+    <span class="key">"title"</span>: <span class="value">"Paiement 100% Sécurisé"</span>,   <span class="comment">← modifier ici</span>
+    <span class="key">"subtitle"</span>: <span class="value">"Système de paiement par étapes..."</span>,
+    <span class="key">"badge"</span>: <span class="value">"Investissement protégé"</span>
+  }
+}
+  </div>
+
+  <h3>7.3 — Sections modifiables</h3>
+  <table>
+    <tr><th>Clé JSON</th><th>Section du site</th><th>Ce que vous pouvez changer</th></tr>
+    <tr><td>nav</td><td>Navigation</td><td>Noms des liens du menu</td></tr>
+    <tr><td>hero</td><td>Page d'accueil</td><td>Titre, sous-titre, badge, boutons CTA</td></tr>
+    <tr><td>trust</td><td>Bloc de confiance</td><td>Titre et descriptions des 8 avantages</td></tr>
+    <tr><td>catalog</td><td>Catalogue produits</td><td>Titre, sous-titre, boutons</td></tr>
+    <tr><td>payment</td><td>Section paiement</td><td>Étapes, descriptions, textes sécurité</td></tr>
+    <tr><td>shipping</td><td>Logistique</td><td>Étapes d'expédition, délais, ports</td></tr>
+    <tr><td>testimonials</td><td>Témoignages</td><td>Titre, badge, textes des 12 avis clients</td></tr>
+    <tr><td>contact</td><td>Formulaire contact</td><td>Titre, badge, texte de confiance</td></tr>
+    <tr><td>footer</td><td>Pied de page</td><td>Slogan, droits réservés</td></tr>
+  </table>
+
+  <h3>7.4 — Modifier un témoignage client</h3>
+  <p>Les textes des 12 témoignages sont dans la clé <code>testimonials.items</code>. Pour modifier le texte du 3ème témoignage en anglais :</p>
+  <div class="code-block">
+<span class="comment">// messages/en.json</span>
+<span class="key">"testimonials"</span>: {
+  <span class="key">"items"</span>: [
+    { ... },  <span class="comment">// témoignage 1</span>
+    { ... },  <span class="comment">// témoignage 2</span>
+    {
+      <span class="key">"text"</span>: <span class="value">"Votre nouveau texte ici..."</span>,
+      <span class="key">"role"</span>: <span class="value">"Votre titre, Ville"</span>
+    },        <span class="comment">// témoignage 3 ← modifier</span>
+    ...
+  ]
+}
+  </div>
+
+  <div class="box box-danger">
+    <div class="box-icon">⚠️</div>
+    <div class="box-content">
+      <strong>Syntaxe JSON</strong>
+      <p>Faites attention aux virgules et guillemets doubles. Si le fichier JSON est invalide, le site affichera une erreur. En cas de doute, utilisez <strong>jsonlint.com</strong> pour vérifier votre JSON avant de sauvegarder.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 7 — Textes multilingues</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 8 — CATALOGUE PRODUITS
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">8</div>
+    <div class="chapter-info">
+      <h2>Personnaliser le catalogue produits</h2>
+      <p>Ajouter, modifier ou supprimer des produits du catalogue</p>
+    </div>
+  </div>
+
+  <p>Le catalogue contient actuellement 43 produits répartis en 8 catégories. Toutes les données produits se trouvent dans un fichier unique :</p>
+  <div class="path-bar">src\data\products.ts</div>
+
+  <h3>8.1 — Structure d'un produit</h3>
+  <div class="code-block">
+{
+  <span class="key">id</span>: <span class="value">"tx504"</span>,
+  <span class="key">category</span>: <span class="value">"tractors"</span>,
+  <span class="key">model</span>: <span class="value">"TORVEXIA TX504"</span>,
+  <span class="key">power</span>: <span class="value">"50 hp"</span>,
+  <span class="key">price</span>: <span class="value">8500</span>,          <span class="comment">// prix en USD</span>
+  <span class="key">image</span>: <span class="value">"/uploads/tractors/tx504.jpg"</span>,
+  <span class="key">features</span>: [<span class="value">"4WD"</span>, <span class="value">"Cabine fermée"</span>, <span class="value">"Prise de force"</span>]
+}
+  </div>
+
+  <h3>8.2 — Ajouter un produit</h3>
+  <div class="steps">
+    <div class="step"><div class="step-content"><strong>Uploadez la photo du produit</strong> dans la Médiathèque (catégorie Tracteurs ou Équipements) et copiez son URL.</div></div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Ouvrez</strong> <code>src/data/products.ts</code> avec un éditeur de texte.
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Copiez un bloc existant</strong> et modifiez toutes les valeurs avec les informations de votre nouveau produit.
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-content">
+        <strong>Sauvegardez</strong>. Le produit apparaîtra automatiquement dans le catalogue.
+      </div>
+    </div>
+  </div>
+
+  <h3>8.3 — Catégories disponibles</h3>
+  <table>
+    <tr><th>Valeur</th><th>Catégorie affichée</th></tr>
+    <tr><td>tractors</td><td>Tracteurs</td></tr>
+    <tr><td>implements</td><td>Équipements agricoles</td></tr>
+    <tr><td>seeding</td><td>Semis</td></tr>
+    <tr><td>irrigation</td><td>Irrigation</td></tr>
+    <tr><td>hay</td><td>Foin & Fourrage</td></tr>
+    <tr><td>transport</td><td>Transport</td></tr>
+    <tr><td>special</td><td>Spéciaux</td></tr>
+    <tr><td>energy</td><td>Énergie</td></tr>
+  </table>
+
+  <h3>8.4 — Modifier un prix ou une puissance</h3>
+  <p>Recherchez le modèle par son <code>id</code> dans le fichier et modifiez le champ <code>price</code> (en USD, sans symbole) ou <code>power</code>. Le site affichera automatiquement la nouvelle valeur.</p>
+
+  <div class="box box-tip">
+    <div class="box-icon">💡</div>
+    <div class="box-content">
+      <strong>Photo de produit</strong>
+      <p>La taille recommandée pour les photos produit est <strong>800×600 px</strong> en format JPG ou WebP. Utilisez des images sur fond blanc ou neutre pour un rendu professionnel.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 8 — Catalogue produits</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 9 — TÉMOIGNAGES
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">9</div>
+    <div class="chapter-info">
+      <h2>Gérer les témoignages clients</h2>
+      <p>Ajouter de nouveaux avis, modifier les noms et notes</p>
+    </div>
+  </div>
+
+  <p>Les témoignages sont gérés en deux parties : les données fixes (nom, pays, produit, étoiles) dans le fichier composant, et les textes traduits dans les fichiers de langue.</p>
+
+  <h3>9.1 — Modifier ou ajouter un témoignage</h3>
+
+  <h4>Étape 1 — Données fixes du client</h4>
+  <p>Ouvrez le fichier :</p>
+  <div class="path-bar">src\components\sections\TestimonialsSection.tsx</div>
+  <p>Trouvez le tableau <code>TESTIMONIALS</code> au début du fichier. Chaque ligne correspond à un client :</p>
+  <div class="code-block">
+{ <span class="key">name</span>: <span class="value">"Carlos Mendez"</span>,
+  <span class="key">country</span>: <span class="value">"México"</span>,
+  <span class="key">initials</span>: <span class="value">"CM"</span>,
+  <span class="key">product</span>: <span class="value">"TORVEXIA TX504"</span>,
+  <span class="key">stars</span>: <span class="value">5</span> },   <span class="comment">← 4 ou 5 étoiles</span>
+  </div>
+
+  <h4>Étape 2 — Texte et rôle traduits</h4>
+  <p>Pour chaque langue, ajoutez l'avis dans le fichier correspondant à la même position dans le tableau <code>testimonials.items</code> :</p>
+  <div class="code-block">
+<span class="comment">// messages/fr.json — 13ème entrée pour un nouveau client</span>
+{
+  <span class="key">"text"</span>: <span class="value">"Excellent service, livraison rapide..."</span>,
+  <span class="key">"role"</span>: <span class="value">"Agriculteur, Maroc"</span>
+}
+  </div>
+
+  <div class="box box-warning">
+    <div class="box-icon">⚠️</div>
+    <div class="box-content">
+      <strong>Synchronisation obligatoire</strong>
+      <p>Le nombre d'entrées dans TESTIMONIALS (fichier .tsx) doit correspondre au nombre d'objets dans <code>testimonials.items</code> dans chacun des 6 fichiers de langue. Si vous ajoutez un 13ème client, vous devez ajouter une 13ème entrée dans les 6 fichiers JSON.</p>
+    </div>
+  </div>
+
+  <h3>9.2 — Modifier le nombre d'étoiles</h3>
+  <p>Dans le tableau <code>TESTIMONIALS</code>, changez la valeur de <code>stars</code> de <code>5</code> à <code>4</code> (ou inversement). Les étoiles grises apparaissent automatiquement pour compléter jusqu'à 5.</p>
+
+  <h3>9.3 — Supprimer un témoignage</h3>
+  <p>Supprimez la ligne correspondante dans <code>TESTIMONIALS</code> ET supprimez l'objet correspondant (même position) dans les 6 fichiers JSON.</p>
+
+  <div class="box box-success">
+    <div class="box-icon">✅</div>
+    <div class="box-content">
+      <strong>Astuce crédibilité</strong>
+      <p>Alternez 4 et 5 étoiles pour rendre les avis plus crédibles. Un mélange de 7×5⭐ et 5×4⭐ comme actuellement est optimal — trop de 5 étoiles peut sembler suspect.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 9 — Témoignages clients</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 10 — DÉPLOIEMENT
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">10</div>
+    <div class="chapter-info">
+      <h2>Mettre en ligne — Déploiement</h2>
+      <p>Publier votre site pour qu'il soit accessible depuis Internet</p>
+    </div>
+  </div>
+
+  <p>Pour mettre le site en ligne, la méthode recommandée est <strong>Vercel</strong> — la plateforme officielle de Next.js, gratuite pour les projets personnels et professionnels petits à moyens.</p>
+
+  <h3>10.1 — Déployer sur Vercel (méthode recommandée)</h3>
+  <div class="steps">
+    <div class="step"><div class="step-content"><strong>Créez un compte</strong> sur <code>vercel.com</code> (gratuit, connexion avec GitHub recommandée).</div></div>
+    <div class="step"><div class="step-content"><strong>Uploadez votre projet</strong> sur GitHub (ou GitLab) : créez un dépôt et poussez le code du dossier <code>torvexia-global/</code>.</div></div>
+    <div class="step"><div class="step-content"><strong>Dans Vercel</strong>, cliquez "New Project" et sélectionnez votre dépôt GitHub.</div></div>
+    <div class="step"><div class="step-content"><strong>Configurez les variables d'environnement</strong> (voir section 10.2 ci-dessous).</div></div>
+    <div class="step"><div class="step-content"><strong>Cliquez "Deploy"</strong>. Vercel construira et publiera automatiquement votre site.</div></div>
+  </div>
+
+  <h3>10.2 — Variables d'environnement en production</h3>
+  <p>Dans les paramètres Vercel de votre projet, ajoutez ces variables (onglet "Environment Variables") :</p>
+
+  <table>
+    <tr><th>Variable</th><th>Valeur</th><th>Description</th></tr>
+    <tr><td>ADMIN_PASSWORD</td><td>Votre mot de passe sécurisé</td><td>Mot de passe du panneau admin</td></tr>
+  </table>
+
+  <div class="box box-danger">
+    <div class="box-icon">🔒</div>
+    <div class="box-content">
+      <strong>Ne jamais uploader .env.local sur GitHub</strong>
+      <p>Le fichier <code>.env.local</code> contient votre mot de passe. Il est déjà ignoré par Git (dans <code>.gitignore</code>). Saisissez toujours vos variables directement dans l'interface Vercel.</p>
+    </div>
+  </div>
+
+  <h3>10.3 — Domaine personnalisé</h3>
+  <p>Dans Vercel → votre projet → onglet "Domains", ajoutez votre domaine (ex : <code>torvexia.com</code>). Vercel vous donne les enregistrements DNS à configurer chez votre registrar (GoDaddy, OVH, Namecheap, etc.).</p>
+
+  <h3>10.4 — Mises à jour du site</h3>
+  <p>Chaque fois que vous modifiez des fichiers et les poussez sur GitHub, Vercel redéploiera automatiquement le site en quelques minutes.</p>
+
+  <div class="box box-warning">
+    <div class="box-icon">📁</div>
+    <div class="box-content">
+      <strong>Important — Fichiers uploadés en production</strong>
+      <p>Les fichiers uploadés via la Médiathèque sont stockés dans <code>public/uploads/</code>. En production sur Vercel (système de fichiers en lecture seule), les uploads ne seront pas persistants entre déploiements. Pour une solution durable, il faudra connecter un service de stockage cloud comme <strong>Cloudinary</strong> ou <strong>AWS S3</strong>.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 10 — Déploiement</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CHAPITRE 11 — RÉSOLUTION DE PROBLÈMES
+════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">11</div>
+    <div class="chapter-info">
+      <h2>Résolution des problèmes courants</h2>
+      <p>Solutions aux situations les plus fréquentes</p>
+    </div>
+  </div>
+
+  <h3>Le site ne démarre pas (<code>npm run dev</code> échoue)</h3>
+  <table>
+    <tr><th>Symptôme</th><th>Cause probable</th><th>Solution</th></tr>
+    <tr><td>"Port 3000 already in use"</td><td>Un autre serveur est déjà ouvert</td><td>Fermez l'autre terminal et relancez</td></tr>
+    <tr><td>Erreur de module manquant</td><td>Dépendances non installées</td><td>Lancez <code>npm install</code> puis réessayez</td></tr>
+    <tr><td>Erreur JSON parse</td><td>Fichier de langue invalide</td><td>Vérifiez les fichiers <code>messages/*.json</code> sur jsonlint.com</td></tr>
+  </table>
+
+  <h3>Mot de passe oublié</h3>
+  <p>Ouvrez le fichier <code>.env.local</code> à la racine du projet, lisez la ligne <code>ADMIN_PASSWORD=...</code> — c'est votre mot de passe actuel. Si vous l'avez perdu, remplacez-le par un nouveau mot de passe et redémarrez le serveur.</p>
+
+  <h3>Les images uploadées ne s'affichent pas</h3>
+  <table>
+    <tr><th>Symptôme</th><th>Solution</th></tr>
+    <tr><td>Image en blanc/gris dans la grille</td><td>L'upload a peut-être échoué. Vérifiez le dossier <code>public/uploads/</code></td></tr>
+    <tr><td>Erreur "File too large"</td><td>Le fichier dépasse 100 MB. Compressez-le avant d'uploader</td></tr>
+    <tr><td>Erreur "Unsupported file type"</td><td>Format non supporté. Utilisez JPG, PNG, WebP, MP4, WebM</td></tr>
+  </table>
+
+  <h3>Texte affiché dans la mauvaise langue</h3>
+  <p>Si un texte reste en espagnol ou en français même après changement de langue, c'est qu'il est encore codé en dur dans le composant. Vérifiez le composant correspondant et assurez-vous qu'il utilise <code>useTranslations()</code> et non du texte fixe.</p>
+
+  <h3>L'admin redirige toujours vers login</h3>
+  <p>Le cookie de session a expiré (durée : 7 jours). Reconnectez-vous simplement. Si le problème persiste, vérifiez que <code>ADMIN_PASSWORD</code> est bien défini dans <code>.env.local</code>.</p>
+
+  <h3>Le changement de texte ne s'affiche pas</h3>
+  <div class="steps">
+    <div class="step"><div class="step-content">Assurez-vous d'avoir <strong>sauvegardé le fichier</strong>.</div></div>
+    <div class="step"><div class="step-content"><strong>Rafraîchissez</strong> le navigateur (<code>Ctrl+R</code> ou <code>F5</code>).</div></div>
+    <div class="step"><div class="step-content">Si toujours pas visible, <strong>videz le cache</strong> : <code>Ctrl+Shift+R</code> (rechargement forcé).</div></div>
+  </div>
+
+  <hr/>
+
+  <h3>Référence rapide — Fichiers importants</h3>
+  <table>
+    <tr><th>Fichier</th><th>Contient</th></tr>
+    <tr><td>.env.local</td><td>Mot de passe admin</td></tr>
+    <tr><td>messages/[langue].json</td><td>Tous les textes du site par langue</td></tr>
+    <tr><td>src/data/products.ts</td><td>Catalogue des produits</td></tr>
+    <tr><td>src/components/sections/TestimonialsSection.tsx</td><td>Liste des témoignages (noms, étoiles)</td></tr>
+    <tr><td>src/components/layout/Navbar.tsx</td><td>Navigation et logo (navbar)</td></tr>
+    <tr><td>src/components/layout/Footer.tsx</td><td>Pied de page</td></tr>
+    <tr><td>data/media.json</td><td>Métadonnées des fichiers uploadés</td></tr>
+    <tr><td>data/galleries.json</td><td>Galeries créées</td></tr>
+    <tr><td>data/settings.json</td><td>Paramètres (email, WhatsApp, textes)</td></tr>
+    <tr><td>public/uploads/</td><td>Dossier de stockage des médias</td></tr>
+  </table>
+
+  <div class="box box-success" style="margin-top: 24px;">
+    <div class="box-icon">🎉</div>
+    <div class="box-content">
+      <strong>Vous êtes prêt !</strong>
+      <p>Ce guide couvre toutes les opérations courantes de gestion de votre site TORVEXIA. Pour toute personnalisation avancée (nouvelles sections, nouvelles fonctionnalités), consultez la documentation Next.js sur <strong>nextjs.org/docs</strong>.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span><strong>TORVEXIA</strong> — Guide Administrateur v1.0</span>
+    <span>Chapitre 11 — Résolution de problèmes</span>
+  </div>
+</div>
+
+</body>
+</html>
