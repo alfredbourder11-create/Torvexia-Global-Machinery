@@ -17,7 +17,7 @@ export function HeroSection() {
   const fadeUp = (delay = 0) => ({
     initial: reduce ? {} : { opacity: 0, y: 28 },
     animate: reduce ? {} : { opacity: 1, y: 0 },
-    transition: { duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] as number[] },
+    transition: { duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] as const },
   });
 
   return (
