@@ -1,5 +1,5 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Transition } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 
 const STATS = [
@@ -14,10 +14,11 @@ export function HeroSection() {
   const locale = useLocale();
   const reduce = useReducedMotion();
 
+  const EASE: Transition = { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] };
   const fadeUp = (delay = 0) => ({
     initial: reduce ? {} : { opacity: 0, y: 28 },
     animate: reduce ? {} : { opacity: 1, y: 0 },
-    transition: { duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] },
+    transition: { ...EASE, delay },
   });
 
   return (
