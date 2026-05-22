@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -26,7 +26,7 @@ export function ShippingSection() {
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
           className="text-center mb-16 lg:mb-20"
         >
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-400 mb-3">
@@ -48,7 +48,7 @@ export function ShippingSection() {
             initial={reduce ? {} : { scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.2, ease: [0.21, 0.47, 0.32, 0.98], delay: 0.3 }}
+            transition={{ duration: 1.2, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number], delay: 0.3 }}
             className="hidden sm:block absolute top-8 left-0 right-0 h-px origin-left"
             style={{ background: "linear-gradient(90deg, transparent 5%, rgba(245,158,11,0.3) 20%, rgba(245,158,11,0.3) 80%, transparent 95%)" }}
           />
@@ -60,7 +60,7 @@ export function ShippingSection() {
                 initial={reduce ? {} : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
                 className="flex flex-col items-center gap-3 text-center"
               >
                 <div className="relative">

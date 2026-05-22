@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -35,7 +35,7 @@ export function PaymentSection() {
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
           className="max-w-2xl mb-16 lg:mb-20"
         >
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-400 mb-3">
@@ -59,7 +59,7 @@ export function PaymentSection() {
               initial={reduce ? {} : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: i * 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              transition={{ duration: 0.55, delay: i * 0.12, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
               className="relative z-10"
             >
               <div className="group relative rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/40 p-8 overflow-hidden transition-colors duration-300">

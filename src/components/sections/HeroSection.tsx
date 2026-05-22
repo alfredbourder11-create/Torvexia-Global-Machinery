@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { motion, useReducedMotion, type Transition } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 
@@ -6,7 +6,7 @@ const STATS = [
   { key: "countries", value: "18+", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
   { key: "machines", value: "500+", icon: "M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" },
   { key: "support", value: "24/7", icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" },
-  { key: "warranty", value: "12–24M", icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" },
+  { key: "warranty", value: "12â€“24M", icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" },
 ];
 
 export function HeroSection() {
@@ -14,7 +14,7 @@ export function HeroSection() {
   const locale = useLocale();
   const reduce = useReducedMotion();
 
-  const EASE: Transition = { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] };
+  const EASE: Transition = { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] };
   const fadeUp = (delay = 0) => ({
     initial: reduce ? {} : { opacity: 0, y: 28 },
     animate: reduce ? {} : { opacity: 1, y: 0 },
@@ -114,7 +114,7 @@ export function HeroSection() {
         <motion.div
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           animate={reduce ? {} : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: 0.7, delay: 0.55, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-3"
         >
           {STATS.map((s) => (

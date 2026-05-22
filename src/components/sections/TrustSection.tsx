@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -18,7 +18,7 @@ const itemVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.07, ease: [0.21, 0.47, 0.32, 0.98] as number[] },
+    transition: { duration: 0.5, delay: i * 0.07, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] },
   }),
 };
 
@@ -35,7 +35,7 @@ export function TrustSection() {
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
           className="text-center mb-16 lg:mb-20"
         >
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-400 mb-3">

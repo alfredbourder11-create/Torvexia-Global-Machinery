@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -7,7 +7,7 @@ import { routing } from "@/i18n/routing";
 import Image from "next/image";
 
 const localeLabels: Record<string, string> = {
-  es: "ES", en: "EN", fr: "FR", pt: "PT", it: "IT", zh: "中文",
+  es: "ES", en: "EN", fr: "FR", pt: "PT", it: "IT", zh: "ä¸­æ–‡",
 };
 
 const NAV_LINKS = [
@@ -49,7 +49,7 @@ export function Navbar() {
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+        transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/60 shadow-2xl shadow-black/40"

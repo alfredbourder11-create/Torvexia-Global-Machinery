@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -21,7 +21,7 @@ export function CatalogPreview() {
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
           className="text-center mb-12 lg:mb-16"
         >
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-400 mb-3">
@@ -67,7 +67,7 @@ export function CatalogPreview() {
               initial={reduce ? {} : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.05 }}
-              transition={{ duration: 0.45, delay: (i % 4) * 0.06, ease: [0.21, 0.47, 0.32, 0.98] }}
+              transition={{ duration: 0.45, delay: (i % 4) * 0.06, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
               whileHover={reduce ? {} : { y: -4, transition: { duration: 0.2 } }}
               className="group relative flex flex-col rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 overflow-hidden transition-colors duration-300"
             >
@@ -122,7 +122,7 @@ export function CatalogPreview() {
                     </span>
                     <span className="text-zinc-600 text-xs">USD</span>
                   </div>
-                  <p className="text-zinc-600 text-xs mb-4">{p.warranty} garantía</p>
+                  <p className="text-zinc-600 text-xs mb-4">{p.warranty} garantÃ­a</p>
                   <ul className="space-y-1 mb-4">
                     {p.features.slice(0, 2).map((f) => (
                       <li key={f} className="flex items-start gap-2 text-zinc-400 text-xs">
@@ -156,7 +156,7 @@ export function CatalogPreview() {
             href="#contact"
             className="inline-flex items-center gap-2 border border-zinc-700 hover:border-amber-500/40 text-zinc-400 hover:text-amber-400 text-sm font-semibold px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer"
           >
-            Voir tout le catalogue — 50+ équipements
+            Voir tout le catalogue â€” 50+ Ã©quipements
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
