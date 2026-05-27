@@ -98,8 +98,8 @@ export function Footer() {
           <p className="text-zinc-600 text-xs">
             © {year} TORVEXIA Global Machinery. {t("rights")}
           </p>
-          <div className="flex items-center gap-1">
-            {["es", "en", "fr", "pt", "it", "zh"].map((l) => (
+          <div className="flex items-center flex-wrap gap-1">
+            {["es", "en", "fr", "pt", "it", "zh", "de", "hr", "pl", "da", "nl", "ro", "sk", "sl", "sv"].map((l) => (
               <a
                 key={l}
                 href={`/${l}`}
@@ -109,7 +109,7 @@ export function Footer() {
                     : "text-zinc-600 hover:text-zinc-400"
                 }`}
               >
-                {l.toUpperCase()}
+                {l === "zh" ? "中文" : l.toUpperCase()}
               </a>
             ))}
           </div>
