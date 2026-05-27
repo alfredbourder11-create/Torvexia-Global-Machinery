@@ -7,7 +7,7 @@ import { routing } from "@/i18n/routing";
 import Image from "next/image";
 
 const localeLabels: Record<string, string> = {
-  es: "ES", en: "EN", fr: "FR", pt: "PT", it: "IT", zh: "中文",
+  es: "ES", en: "EN", pt: "PT", it: "IT", zh: "中文",
   de: "DE", hr: "HR", pl: "PL", da: "DA", nl: "NL",
   ro: "RO", sk: "SK", sl: "SL", sv: "SV",
 };

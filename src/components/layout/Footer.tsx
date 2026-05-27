@@ -99,7 +99,7 @@ export function Footer() {
             © {year} TORVEXIA Global Machinery. {t("rights")}
           </p>
           <div className="flex items-center flex-wrap gap-1">
-            {["es", "en", "fr", "pt", "it", "zh", "de", "hr", "pl", "da", "nl", "ro", "sk", "sl", "sv"].map((l) => (
+            {["es", "en", "pt", "it", "zh", "de", "hr", "pl", "da", "nl", "ro", "sk", "sl", "sv"].map((l) => (
               <a
                 key={l}
                 href={`/${l}`}
