@@ -28,6 +28,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "hero" });
   return {
+    other: { google: "notranslate" },
     title: `TORVEXIA Global Machinery | ${t("title")} ${t("titleHighlight")}`,
     description: t("subtitle"),
     keywords: [
@@ -64,6 +65,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
+      translate="no"
       suppressHydrationWarning
       className={`${spaceGrotesk.variable} ${inter.variable}`}
     >
