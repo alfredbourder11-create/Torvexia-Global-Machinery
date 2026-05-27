@@ -74,8 +74,8 @@ export function ContactSection() {
                     {t(item.labelKey)}
                   </p>
                   {item.valueKey === "emailValue" ? (
-                    <a href={`mailto:${t(item.valueKey)}`} className="text-white font-semibold text-sm hover:text-amber-400 transition-colors duration-200">
-                      {t(item.valueKey)}
+                    <a href="mailto:contact@torvexia.org" className="text-amber-400 hover:text-amber-300 font-semibold text-sm transition-colors duration-200">
+                      contact@torvexia.org
                     </a>
                   ) : (
                     <p className="text-white font-semibold text-sm">{t(item.valueKey)}</p>

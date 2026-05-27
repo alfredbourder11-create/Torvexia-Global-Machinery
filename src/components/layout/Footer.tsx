@@ -80,7 +80,7 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z", text: "Qingdao, China", href: null },
-                { icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", text: tContact("emailValue"), href: `mailto:${tContact("emailValue")}` },
+                { icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", text: "contact@torvexia.org", href: "mailto:contact@torvexia.org" },
                 { icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z", text: tContact("whatsappValue"), href: null },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
@@ -88,7 +88,7 @@ export function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
                   </svg>
                   {item.href ? (
-                    <a href={item.href} className="text-zinc-500 hover:text-amber-400 text-sm transition-colors duration-200">{item.text}</a>
+                    <a href={item.href} className="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors duration-200">{item.text}</a>
                   ) : (
                     <span className="text-zinc-500 text-sm">{item.text}</span>
                   )}
