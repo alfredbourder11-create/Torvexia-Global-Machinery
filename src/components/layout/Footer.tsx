@@ -39,15 +39,15 @@ export function Footer() {
             </p>
             <div className="flex gap-6">
               {[
-                { value: "18+", label: "Pays" },
-                { value: "500+", label: "Exportations" },
-                { value: "24/7", label: "Support" },
+                { value: "18+", labelKey: "countries" },
+                { value: "500+", labelKey: "exports" },
+                { value: "24/7", labelKey: "support" },
               ].map((s) => (
-                <div key={s.label}>
+                <div key={s.labelKey}>
                   <p className="text-amber-400 font-black text-lg" style={{ fontFamily: "var(--font-display, system-ui)" }}>
                     {s.value}
                   </p>
-                  <p className="text-zinc-600 text-xs uppercase tracking-wide">{s.label}</p>
+                  <p className="text-zinc-600 text-xs uppercase tracking-wide">{t(s.labelKey)}</p>
                 </div>
               ))}
             </div>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -25,7 +25,7 @@ export function CatalogPreview() {
           className="text-center mb-12 lg:mb-16"
         >
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-400 mb-3">
-            50+ equipos disponibles
+            {t("equipmentBadge")}
           </p>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-4"
@@ -55,7 +55,7 @@ export function CatalogPreview() {
                   : "bg-zinc-900 border border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-300"
               }`}
             >
-              {c.label}
+              {t(`categories.${c.key}`)}
             </button>
           ))}
         </motion.div>
@@ -93,7 +93,7 @@ export function CatalogPreview() {
                 </div>
                 <div className="absolute top-3 left-3">
                   <span className="bg-zinc-950/80 backdrop-blur-sm text-zinc-400 text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-zinc-700">
-                    {p.category}
+                    {t(`categories.${p.category}`)}
                   </span>
                 </div>
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-amber-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -122,7 +122,7 @@ export function CatalogPreview() {
                     </span>
                     <span className="text-zinc-600 text-xs">USD</span>
                   </div>
-                  <p className="text-zinc-600 text-xs mb-4">{p.warranty} garantÃ­a</p>
+                  <p className="text-zinc-600 text-xs mb-4">{p.warranty} {t("warrantyLabel")}</p>
                   <ul className="space-y-1 mb-4">
                     {p.features.slice(0, 2).map((f) => (
                       <li key={f} className="flex items-start gap-2 text-zinc-400 text-xs">
@@ -156,7 +156,7 @@ export function CatalogPreview() {
             href="#contact"
             className="inline-flex items-center gap-2 border border-zinc-700 hover:border-amber-500/40 text-zinc-400 hover:text-amber-400 text-sm font-semibold px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer"
           >
-            Voir tout le catalogue â€” 50+ Ã©quipements
+            {t("viewAll")}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

@@ -39,7 +39,7 @@ export function TrustSection() {
           className="text-center mb-16 lg:mb-20"
         >
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-amber-400 mb-3">
-            Ventajas competitivas
+            {t("badge")}
           </p>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-4"

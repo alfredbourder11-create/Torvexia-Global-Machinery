@@ -1,20 +1,20 @@
-﻿"use client";
+"use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 const TESTIMONIALS = [
-  { name: "Carlos Mendez",      country: "MÃ©xico",          initials: "CM", product: "TORVEXIA TX504",          stars: 5 },
-  { name: "Juan Pablo Rivera",  country: "PerÃº",            initials: "JR", product: "TX704 + Rotavator RT180", stars: 5 },
-  { name: "Ana Lucia Torres",   country: "Ecuador",         initials: "AT", product: "Presse PB80",             stars: 4 },
-  { name: "Miguel Ã. Flores",   country: "El Salvador",     initials: "MF", product: "TX804 Professional",      stars: 5 },
-  { name: "Santiago GutiÃ©rrez", country: "Colombia",        initials: "SG", product: "Kit solaire + Pompe",     stars: 4 },
-  { name: "Roberto Ixcot",      country: "Guatemala",       initials: "RI", product: "TX604 + Semoir 4 rangs",  stars: 5 },
-  { name: "Marcos Oliveira",    country: "Brasil",          initials: "MO", product: "TX504 + Grade Aradora",   stars: 4 },
-  { name: "Diego Fuentes",      country: "Chile",           initials: "DF", product: "TX904 4WD",               stars: 5 },
-  { name: "Luis Mamani",        country: "Bolivia",         initials: "LM", product: "TX604 + Pulverizador",    stars: 4 },
-  { name: "Pedro Galeano",      country: "Paraguay",        initials: "PG", product: "TX704 + Rotavator RT180", stars: 5 },
-  { name: "JosÃ© Reyes",         country: "Honduras",        initials: "JR", product: "TX504 Compact",           stars: 4 },
-  { name: "Rafael DÃ­az",        country: "Rep. Dominicana", initials: "RD", product: "TX804 + Kit irrigation",  stars: 5 },
+  { name: "Carlos Mendez",      country: "México",           initials: "CM", product: "TORVEXIA TX504",          stars: 5 },
+  { name: "Juan Pablo Rivera",  country: "Perú",             initials: "JR", product: "TX704 + Rotavator RT180", stars: 5 },
+  { name: "Ana Lucia Torres",   country: "Ecuador",          initials: "AT", product: "Hay Baler PB80",          stars: 4 },
+  { name: "Miguel Á. Flores",   country: "El Salvador",      initials: "MF", product: "TX804 Professional",      stars: 5 },
+  { name: "Santiago Gutiérrez", country: "Colombia",         initials: "SG", product: "Solar Kit + Pump",        stars: 4 },
+  { name: "Roberto Ixcot",      country: "Guatemala",        initials: "RI", product: "TX604 + 4-Row Seeder",    stars: 5 },
+  { name: "Marcos Oliveira",    country: "Brasil",           initials: "MO", product: "TX504 + Disc Harrow",     stars: 4 },
+  { name: "Diego Fuentes",      country: "Chile",            initials: "DF", product: "TX904 4WD",               stars: 5 },
+  { name: "Luis Mamani",        country: "Bolivia",          initials: "LM", product: "TX604 + Sprayer",         stars: 4 },
+  { name: "Pedro Galeano",      country: "Paraguay",         initials: "PG", product: "TX704 + Rotavator RT180", stars: 5 },
+  { name: "José Reyes",         country: "Honduras",         initials: "JR", product: "TX504 Compact",           stars: 4 },
+  { name: "Rafael Díaz",        country: "Rep. Dominicana",  initials: "RD", product: "TX804 + Irrigation Kit",  stars: 5 },
 ];
 
 function StarRow({ count }: { count: number }) {
