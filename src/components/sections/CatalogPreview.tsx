@@ -72,25 +72,15 @@ export function CatalogPreview() {
               className="group relative flex flex-col rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 overflow-hidden transition-colors duration-300"
             >
               <div className="relative h-44 bg-zinc-800 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover" />
                 <div
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(245,158,11,0.04) 50%, transparent 100%)",
+                      "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%)",
                   }}
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg className="w-20 h-20 text-zinc-700" viewBox="0 0 80 60" fill="currentColor">
-                    <rect x="5" y="25" width="45" height="20" rx="2" />
-                    <rect x="20" y="15" width="25" height="15" rx="2" />
-                    <circle cx="15" cy="48" r="10" fill="none" stroke="currentColor" strokeWidth="3" />
-                    <circle cx="55" cy="48" r="7" fill="none" stroke="currentColor" strokeWidth="3" />
-                    <circle cx="15" cy="48" r="4" />
-                    <circle cx="55" cy="48" r="2.5" />
-                    <rect x="50" y="28" width="18" height="10" rx="1" />
-                    <line x1="50" y1="30" x2="68" y2="30" stroke="currentColor" strokeWidth="1.5" />
-                  </svg>
-                </div>
                 <div className="absolute top-3 left-3">
                   <span className="bg-zinc-950/80 backdrop-blur-sm text-zinc-400 text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border border-zinc-700">
                     {t(`categories.${p.category}`)}
