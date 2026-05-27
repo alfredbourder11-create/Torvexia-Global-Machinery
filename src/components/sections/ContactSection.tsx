@@ -73,7 +73,13 @@ export function ContactSection() {
                   <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">
                     {t(item.labelKey)}
                   </p>
-                  <p className="text-white font-semibold text-sm">{t(item.valueKey)}</p>
+                  {item.valueKey === "emailValue" ? (
+                    <a href={`mailto:${t(item.valueKey)}`} className="text-white font-semibold text-sm hover:text-amber-400 transition-colors duration-200">
+                      {t(item.valueKey)}
+                    </a>
+                  ) : (
+                    <p className="text-white font-semibold text-sm">{t(item.valueKey)}</p>
+                  )}
                 </div>
               </div>
             ))}
