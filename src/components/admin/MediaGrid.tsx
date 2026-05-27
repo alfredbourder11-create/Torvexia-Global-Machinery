@@ -23,7 +23,7 @@ export function MediaGrid({ initialFiles }: Props) {
   const selectedFile = files.find((f) => f.id === selected) ?? null;
 
   async function handleDelete(id: string) {
-    if (!confirm("Supprimer ce fichier définitivement ?")) return;
+    if (!confirm("Delete this file permanently?")) return;
     setDeleting(id);
     try {
       const res = await fetch("/admin/api/delete", {
@@ -48,9 +48,7 @@ export function MediaGrid({ initialFiles }: Props) {
 
   return (
     <div className="flex gap-6">
-      {/* Grid */}
       <div className="flex-1 min-w-0">
-        {/* Filter */}
         <div className="flex gap-2 mb-4">
           {(["all", "image", "video"] as const).map((f) => (
             <button
@@ -62,7 +60,7 @@ export function MediaGrid({ initialFiles }: Props) {
                   : "bg-zinc-800 text-zinc-400 hover:text-white"
               }`}
             >
-              {f === "all" ? "Tous" : f === "image" ? "Images" : "Vidéos"}
+              {f === "all" ? "All" : f === "image" ? "Images" : "Videos"}
               <span className="ml-1.5 opacity-60">
                 {f === "all" ? files.length : files.filter((x) => x.type === f).length}
               </span>
@@ -72,7 +70,7 @@ export function MediaGrid({ initialFiles }: Props) {
 
         {filtered.length === 0 ? (
           <div className="rounded-2xl bg-zinc-900 border border-zinc-800 border-dashed p-16 text-center">
-            <p className="text-zinc-500 text-sm">Aucun fichier dans cette catégorie</p>
+            <p className="text-zinc-500 text-sm">No files in this category</p>
           </div>
         ) : (
           <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
@@ -96,12 +94,11 @@ export function MediaGrid({ initialFiles }: Props) {
                     </svg>
                   </div>
                 )}
-                {/* Delete button */}
                 <button
                   onClick={(e) => { e.stopPropagation(); handleDelete(file.id); }}
                   disabled={deleting === file.id}
                   className="absolute top-1 right-1 w-6 h-6 rounded-md bg-zinc-950/80 text-zinc-400 hover:text-red-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-150 cursor-pointer hover:bg-zinc-950"
-                  title="Supprimer"
+                  title="Delete"
                 >
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -113,7 +110,6 @@ export function MediaGrid({ initialFiles }: Props) {
         )}
       </div>
 
-      {/* Detail panel */}
       {selectedFile && (
         <div className="w-64 flex-shrink-0 rounded-2xl bg-zinc-900 border border-zinc-800 p-5 space-y-4 self-start sticky top-6">
           <div className="aspect-square rounded-xl overflow-hidden bg-zinc-800">
@@ -130,9 +126,9 @@ export function MediaGrid({ initialFiles }: Props) {
             <div className="space-y-1">
               {[
                 { label: "Type", value: selectedFile.type },
-                { label: "Taille", value: formatBytes(selectedFile.size) },
-                { label: "Catégorie", value: selectedFile.category },
-                { label: "Ajouté", value: new Date(selectedFile.uploadedAt).toLocaleDateString("fr") },
+                { label: "Size", value: formatBytes(selectedFile.size) },
+                { label: "Category", value: selectedFile.category },
+                { label: "Added", value: new Date(selectedFile.uploadedAt).toLocaleDateString("en") },
               ].map((item) => (
                 <div key={item.label} className="flex justify-between text-xs">
                   <span className="text-zinc-500">{item.label}</span>
@@ -149,7 +145,7 @@ export function MediaGrid({ initialFiles }: Props) {
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
-            {copyFeedback === selectedFile.url ? "Copié !" : "Copier l'URL"}
+            {copyFeedback === selectedFile.url ? "Copied!" : "Copy URL"}
           </button>
 
           <button
@@ -160,7 +156,7 @@ export function MediaGrid({ initialFiles }: Props) {
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
-            {deleting === selectedFile.id ? "Suppression..." : "Supprimer"}
+            {deleting === selectedFile.id ? "Deleting..." : "Delete"}
           </button>
         </div>
       )}

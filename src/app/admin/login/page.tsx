@@ -23,8 +23,8 @@ export default function AdminLoginPage() {
 
         <form action={formAction} className="rounded-2xl bg-zinc-900 border border-zinc-800 p-8 space-y-5">
           <div>
-            <h1 className="text-white font-bold text-xl mb-1">Connexion</h1>
-            <p className="text-zinc-500 text-sm">Entrez votre mot de passe administrateur</p>
+            <h1 className="text-white font-bold text-xl mb-1">Sign in</h1>
+            <p className="text-zinc-500 text-sm">Enter your administrator password</p>
           </div>
 
           {state.error && (
@@ -35,7 +35,7 @@ export default function AdminLoginPage() {
 
           <div>
             <label htmlFor="password" className="block text-zinc-400 text-xs uppercase tracking-wider mb-2">
-              Mot de passe
+              Password
             </label>
             <input
               id="password"
@@ -53,7 +53,7 @@ export default function AdminLoginPage() {
             disabled={pending}
             className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-zinc-950 font-bold py-3 rounded-xl text-sm uppercase tracking-wider transition-colors duration-200 cursor-pointer"
           >
-            {pending ? "Connexion..." : "Se connecter"}
+            {pending ? "Signing in..." : "Sign in"}
           </button>
         </form>
       </div>

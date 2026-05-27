@@ -40,7 +40,7 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
   }
 
   async function handleSave() {
-    if (!name.trim()) { setError("Le nom est requis"); return; }
+    if (!name.trim()) { setError("Name is required"); return; }
     setSaving(true);
     setError("");
     try {
@@ -69,7 +69,7 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
   }
 
   async function handleDelete(id: string) {
-    if (!confirm("Supprimer cette galerie ?")) return;
+    if (!confirm("Delete this gallery?")) return;
     const res = await fetch("/admin/api/gallery", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -84,7 +84,7 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
     return (
       <div className="rounded-2xl bg-zinc-900 border border-zinc-800 p-6 space-y-5">
         <div className="flex items-center justify-between">
-          <h2 className="text-white font-bold text-lg">{editing ? "Modifier la galerie" : "Nouvelle galerie"}</h2>
+          <h2 className="text-white font-bold text-lg">{editing ? "Edit gallery" : "New gallery"}</h2>
           <button onClick={() => setCreating(false)} className="text-zinc-500 hover:text-white transition-colors cursor-pointer">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -98,11 +98,11 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
 
         <div className="space-y-3">
           <div>
-            <label className="block text-zinc-400 text-xs uppercase tracking-wider mb-1.5">Nom *</label>
+            <label className="block text-zinc-400 text-xs uppercase tracking-wider mb-1.5">Name *</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Ex: Tracteurs TX504"
+              placeholder="e.g. TX504 Tractors"
               className="w-full bg-zinc-800 border border-zinc-700 focus:border-amber-500/60 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm outline-none transition-all focus:ring-2 focus:ring-amber-500/15"
             />
           </div>
@@ -111,7 +111,7 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description optionnelle..."
+              placeholder="Optional description..."
               rows={3}
               className="w-full bg-zinc-800 border border-zinc-700 focus:border-amber-500/60 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm outline-none transition-all resize-none focus:ring-2 focus:ring-amber-500/15"
             />
@@ -120,10 +120,10 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
 
         <div>
           <label className="block text-zinc-400 text-xs uppercase tracking-wider mb-2">
-            Sélectionner des images ({selectedIds.length} sélectionnées)
+            Select images ({selectedIds.length} selected)
           </label>
           {images.length === 0 ? (
-            <p className="text-zinc-600 text-sm">Aucune image disponible — téléversez d&apos;abord des médias.</p>
+            <p className="text-zinc-600 text-sm">No images available — upload media first.</p>
           ) : (
             <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-2 max-h-72 overflow-y-auto">
               {images.map((f) => {
@@ -158,13 +158,13 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
             disabled={saving}
             className="flex-1 bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-zinc-950 font-bold py-3 rounded-xl text-sm uppercase tracking-wider transition-colors cursor-pointer"
           >
-            {saving ? "Enregistrement..." : "Enregistrer"}
+            {saving ? "Saving..." : "Save"}
           </button>
           <button
             onClick={() => setCreating(false)}
             className="px-6 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium py-3 rounded-xl text-sm transition-colors cursor-pointer"
           >
-            Annuler
+            Cancel
           </button>
         </div>
       </div>
@@ -180,12 +180,12 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
         </svg>
-        Nouvelle galerie
+        New gallery
       </button>
 
       {galleries.length === 0 ? (
         <div className="rounded-2xl bg-zinc-900 border border-zinc-800 border-dashed p-16 text-center">
-          <p className="text-zinc-500 text-sm">Aucune galerie pour l&apos;instant</p>
+          <p className="text-zinc-500 text-sm">No galleries yet</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -197,7 +197,6 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
 
             return (
               <div key={g.id} className="rounded-2xl bg-zinc-900 border border-zinc-800 overflow-hidden">
-                {/* Thumbnail grid */}
                 <div className="grid grid-cols-2 h-32">
                   {[0, 1, 2, 3].map((i) => (
                     <div key={i} className="bg-zinc-800 overflow-hidden">
@@ -223,13 +222,13 @@ export function GalleriesManager({ initialGalleries, allFiles }: Props) {
                       onClick={() => openEdit(g)}
                       className="flex-1 text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 py-1.5 rounded-lg transition-colors cursor-pointer"
                     >
-                      Modifier
+                      Edit
                     </button>
                     <button
                       onClick={() => handleDelete(g.id)}
                       className="flex-1 text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 py-1.5 rounded-lg transition-colors cursor-pointer border border-red-500/20"
                     >
-                      Supprimer
+                      Delete
                     </button>
                   </div>
                 </div>

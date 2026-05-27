@@ -27,7 +27,7 @@ export function SettingsForm({ initialSettings }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(settings),
       });
-      if (!res.ok) throw new Error("Erreur lors de la sauvegarde");
+      if (!res.ok) throw new Error("Error saving settings");
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     } catch (e) {
@@ -38,16 +38,16 @@ export function SettingsForm({ initialSettings }: Props) {
   }
 
   const fields: { key: keyof SiteSettings; label: string; placeholder: string; type?: string }[] = [
-    { key: "contactEmail", label: "Email de contact", placeholder: "contact@torvexia.com", type: "email" },
+    { key: "contactEmail", label: "Contact email", placeholder: "contact@torvexia.com", type: "email" },
     { key: "contactWhatsapp", label: "WhatsApp", placeholder: "+86 XXX XXX XXXX" },
-    { key: "heroTitle", label: "Titre principal (Hero)", placeholder: "Maquinaria Agrícola Directamente de China" },
-    { key: "heroSubtitle", label: "Sous-titre (Hero)", placeholder: "Exportamos tractores y equipos agrícolas..." },
+    { key: "heroTitle", label: "Main title (Hero)", placeholder: "New Agricultural Machinery Direct From China" },
+    { key: "heroSubtitle", label: "Subtitle (Hero)", placeholder: "From port to your farm with no middlemen..." },
   ];
 
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
       <div className="rounded-2xl bg-zinc-900 border border-zinc-800 p-6 space-y-5">
-        <h2 className="text-white font-bold text-base">Informations de contact</h2>
+        <h2 className="text-white font-bold text-base">Contact information</h2>
 
         {fields.map((field) => (
           <div key={field.key}>
@@ -93,12 +93,12 @@ export function SettingsForm({ initialSettings }: Props) {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
             </svg>
-            Sauvegardé
+            Saved
           </>
         ) : saving ? (
-          "Enregistrement..."
+          "Saving..."
         ) : (
-          "Enregistrer"
+          "Save"
         )}
       </button>
     </form>

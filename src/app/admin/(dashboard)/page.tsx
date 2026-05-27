@@ -9,7 +9,7 @@ export default function AdminDashboard() {
 
   const stats = [
     {
-      label: "Total médias",
+      label: "Total media",
       value: files.length,
       icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
     },
@@ -19,12 +19,12 @@ export default function AdminDashboard() {
       icon: "M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z M15 13a3 3 0 11-6 0 3 3 0 016 0z",
     },
     {
-      label: "Vidéos",
+      label: "Videos",
       value: videos.length,
       icon: "M15 10l4.553-2.277A1 1 0 0121 8.68v6.64a1 1 0 01-1.447.897L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z",
     },
     {
-      label: "Galeries",
+      label: "Galleries",
       value: galleries.length,
       icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
     },
@@ -33,8 +33,8 @@ export default function AdminDashboard() {
   return (
     <div className="p-8">
       <div className="mb-8">
-        <h1 className="text-white font-black text-2xl mb-1">Tableau de bord</h1>
-        <p className="text-zinc-500 text-sm">Gérez les médias et le contenu de votre site</p>
+        <h1 className="text-white font-black text-2xl mb-1">Dashboard</h1>
+        <p className="text-zinc-500 text-sm">Manage your site media and content</p>
       </div>
 
       {/* Stats */}
@@ -54,15 +54,15 @@ export default function AdminDashboard() {
 
       {/* Recent uploads */}
       <div>
-        <h2 className="text-white font-bold text-lg mb-4">Récemment ajoutés</h2>
+        <h2 className="text-white font-bold text-lg mb-4">Recently added</h2>
         {recent.length === 0 ? (
           <div className="rounded-2xl bg-zinc-900 border border-zinc-800 border-dashed p-12 text-center">
             <svg className="w-10 h-10 text-zinc-700 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
-            <p className="text-zinc-500 text-sm">Aucun média pour l&apos;instant</p>
+            <p className="text-zinc-500 text-sm">No media yet</p>
             <a href="/admin/media" className="text-amber-400 text-sm hover:text-amber-300 transition-colors mt-1 inline-block cursor-pointer">
-              Ajouter des médias →
+              Add media →
             </a>
           </div>
         ) : (
