@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -7,7 +7,7 @@ import { routing } from "@/i18n/routing";
 import Image from "next/image";
 
 const localeLabels: Record<string, string> = {
-  es: "ES", en: "EN", fr: "FR", pt: "PT", it: "IT", zh: "ä¸­æ–‡",
+  es: "ES", en: "EN", fr: "FR", pt: "PT", it: "IT", zh: "中文",
 };
 
 const NAV_LINKS = [
