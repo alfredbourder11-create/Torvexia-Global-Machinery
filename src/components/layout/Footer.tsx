@@ -56,7 +56,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">
-              Navigation
+              {t("navTitle")}
             </h4>
             <ul className="space-y-2.5">
               {LINKS.map(({ key, href }) => (
@@ -75,7 +75,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">
-              Contact
+              {t("contactTitle")}
             </h4>
             <ul className="space-y-3">
               {[
